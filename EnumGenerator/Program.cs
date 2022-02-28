@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 
 Console.WriteLine("Create Enum");
+
 EnumModel model = new EnumModel
 {
     Name = "RECO_TYPE",
@@ -15,5 +16,5 @@ string json = JsonConvert.SerializeObject(model, Formatting.Indented);
 
 Console.WriteLine(json);
 
-new DotnetGenerator().Generate(model);
-new JavaGenerator().Generate(model);
+new DotnetGenerator().Generate(model, "out");
+new JavaGenerator().Generate(model, "out");

@@ -10,7 +10,7 @@ namespace EnumGenerator
     {
         public string Namespace { get; set; } = "MyEnum";
 
-        public void Generate(EnumModel model)
+        public void Generate(EnumModel model, string path)
         {
             MainWriter mw = new(Style.DOTNET);
 
@@ -37,7 +37,8 @@ namespace EnumGenerator
                 }
             }
 
-            Console.WriteLine(mw.Finalize());
+            Directory.CreateDirectory(path);
+            File.WriteAllText(Path.Combine(path, model.Name+".cs"), mw.Finalize());
         }
     }
 }

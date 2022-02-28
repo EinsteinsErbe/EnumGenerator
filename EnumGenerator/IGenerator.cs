@@ -8,6 +8,6 @@ namespace EnumGenerator
 {
     public interface IGenerator
     {
-        public void Generate(EnumModel model);
+        public void Generate(EnumModel model, string file);
     }
 }

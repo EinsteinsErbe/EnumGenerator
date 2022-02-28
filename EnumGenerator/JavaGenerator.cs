@@ -10,7 +10,7 @@ namespace EnumGenerator
     {
         public string Package { get; set; } = "myenum";
 
-        public void Generate(EnumModel model)
+        public void Generate(EnumModel model, string path)
         {
             MainWriter mw = new(Style.JAVA);
 
@@ -46,7 +46,8 @@ namespace EnumGenerator
                 }
             }
 
-            Console.WriteLine(mw.Finalize());
+            Directory.CreateDirectory(path);
+            File.WriteAllText(Path.Combine(path, model.Name + ".java"), mw.Finalize());
         }
     }
 }
